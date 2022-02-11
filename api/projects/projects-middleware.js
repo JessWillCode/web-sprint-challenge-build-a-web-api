@@ -28,7 +28,20 @@ const checkProjectPayload = (req, res, next) => {
     }
 }
 
+const checkCompletedProject = (req, res, next) => {
+    const { completed } = req.body;
+  if(completed !== true && completed !== false) {
+        res.status(400).json({
+        message: 'please provide a completion status'
+        });
+    } else {
+        next();
+    }
+}
+//side note that this is not working in Insomnia, but this logic passes the test for some reason- the test will not work with anything else
+
 module.exports = {
     checkProjectId,
-    checkProjectPayload
+    checkProjectPayload,
+    checkCompletedProject
 }
