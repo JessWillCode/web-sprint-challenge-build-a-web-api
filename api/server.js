@@ -1,9 +1,20 @@
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+
+const projectsRouter = require('./projects/projects-router.js');
+const actionsRouter = require('./actions/actions-router.js');
+
 const server = express();
 
-// Configure your server here
-// Build your actions router in /api/actions/actions-router.js
-// Build your projects router in /api/projects/projects-router.js
-// Do NOT `server.listen()` inside this file!
+server.use(express.json());
+server.use(morgan('tiny'))
+server.use(cors());
+
+server.use('*', (req,res) => {
+    res.status(500).json({
+        message: `[${req.method}]: ${req.baseUrl} not found!`
+    });
+})
 
 module.exports = server;
