@@ -92,22 +92,22 @@ The description of the structure and extra information about each _resource_ sto
 
 #### Projects
 
-| Field       | Data Type | Metadata                                                                    |
-| ----------- | --------- | --------------------------------------------------------------------------- |
-| id          | number    | do not provide it when creating projects, the database will generate it     |
-| name        | string    | required                                                                    |
-| description | string    | required                                                                    |
-| completed   | boolean   | not required, defaults to false when creating projects                      |
+| Field       | Data Type | Metadata                                                                |
+| ----------- | --------- | ----------------------------------------------------------------------- |
+| id          | number    | do not provide it when creating projects, the database will generate it |
+| name        | string    | required                                                                |
+| description | string    | required                                                                |
+| completed   | boolean   | not required, defaults to false when creating projects                  |
 
 #### Actions
 
-| Field       | Data Type | Metadata                                                                                         |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------ |
-| id          | number    | do not provide it when creating actions, the database will generate it                           |
-| project_id  | number    | required, must be the id of an existing project                                                  |
-| description | string    | required, up to 128 characters long                                                              |
-| notes       | string    | required, no size limit. Used to record additional notes or requirements to complete the action  |
-| completed   | boolean   | not required, defaults to false when creating actions                                            |
+| Field       | Data Type | Metadata                                                                                        |
+| ----------- | --------- | ----------------------------------------------------------------------------------------------- |
+| id          | number    | do not provide it when creating actions, the database will generate it                          |
+| project_id  | number    | required, must be the id of an existing project                                                 |
+| description | string    | required, up to 128 characters long                                                             |
+| notes       | string    | required, no size limit. Used to record additional notes or requirements to complete the action |
+| completed   | boolean   | not required, defaults to false when creating actions                                           |
 
 ### Database Persistence Helpers
 
@@ -147,7 +147,33 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
-1. Understand and explain the use of Middleware.
-1. The basic principles of the REST architectural style.
-1. Understand and explain the use of Express Routers.
-1. Describe tooling used to manually test the correctness of an API.
+
+It can be used to design single-page, multi-page and hybrid web applications.
+It allows to setup middlewares to respond to HTTP Requests.
+It defines a routing table which is used to perform different actions based on HTTP method and URL.
+
+2. Understand and explain the use of Middleware.
+
+Middleware is used kind of like the different points of a drive-thru at a fast food place. They are different functions that perform different operations or sometimes give information to the req or the res as you’re going through the request. So like for our drive thru, we give our order to the “server”, and then pay, but then when you get to the window, the “server” gives us food. If there’s an error at any point in the process, we can think of that like we forgot our money or something so we have to go to the bank aka go to the error handling function before we can finally go home.
+
+3. The basic principles of the REST architectural style.
+
+REST is a client-server architecture. The client and the server both have a different set of concerns. The server stores and/or manipulates information and makes it available to the user in an efficient manner. The client takes that information and displays it to the user and/or uses it to perform subsequent requests for information. This separation of concerns allows both the client and the server to evolve independently as it only requires that the interface stays the same.
+
+REST is stateless. That means the communication between the client and the server always contains all the information needed to perform the request. There is no session state in the server, it is kept entirely on the client's side. If access to a resource requires authentication, then the client needs to authenticate itself with every request.
+
+REST is cacheable. The client, the server and any intermediary components can all cache resources in order to improve performance.
+
+REST provides a uniform interface between components. This simplifies the architecture, as all components follow the same rules to speak to one another. It also makes it easier to understand the interactions between the different components of the system. A number of constraints are required to achieve this. They are covered in the rest of the chapter.
+
+REST is a layered system. Individual components cannot see beyond the immediate layer with which they are interacting. This means that a client connecting to an intermediate component, like a proxy, has no knowledge of what lies beyond. This allows components to be independent and thus easily replaceable or extendable.
+
+REST optionally provides code on demand. Code may be downloaded to extend client functionality. This is optional however because the client may not be able to download or run this code, and so a REST component cannot rely on it being executed.
+
+4. Understand and explain the use of Express Routers.
+
+The express.Router() function is used to create a new router object. This function is used when you want to create a new router object in your program to handle requests.
+
+5. Describe tooling used to manually test the correctness of an API.
+
+API testing is performed by submitting requests to the software using tools like Postman, Insomnia, or HTTPie and then checking if it returns the expected data.
